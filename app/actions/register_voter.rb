@@ -1,5 +1,6 @@
 class RegisterVoter
-  def self.call(email, secret={})
+  def self.call(email, secret=nil)
+    secret ||= {}
     new(email, secret).call
   end
 
@@ -13,6 +14,9 @@ class RegisterVoter
   private
 
   def initialize(email, secret)
+    secret[:birth_date] = Date.parse(secret[:birth_date]).to_s if secret[:birth_date]
+    secret[:document]   = secret[:document].upcase if secret[:document]
+
     @voter = Voter.find_or_create_by(email: email)
     @secret = VoterSecret.find_by("data = :data", data: hstore(secret))
   end
