@@ -18,7 +18,6 @@ class Admin::ProposalsController < AdminController
 
   def create
     @proposal = Proposal.new(proposal_params)
-
     if @proposal.save
       redirect_to admin_proposals_path, success: _('Proposal was successfully created.')
     else
@@ -55,7 +54,7 @@ class Admin::ProposalsController < AdminController
   end
 
   def proposal_params
-    p = params.require(:proposal).permit(:title, :description, :budget, :image, :completed, :district_id, :area_id, tag_ids: [])
+    p = params.require(:proposal).permit(:title, :description, :budget, :image, :completed, :campaign_id, :district_id, :area_id, tag_ids: [])
     p[:budget] = p[:budget]&.gsub(',', '_')&.to_d if p[:budget]
     p[:image] = nil if params[:delete_image]
     p
