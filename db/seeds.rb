@@ -2,30 +2,31 @@
 
 ## Admin roles
 
-civio = Admin::Role.create(email: '@civio.es')
+okgre = Admin::Role.create(email: '@okfn.gr')
 
 ## Voters
 
-raul    = Voter.create(email: 'raul@civio.es', verified: true)
-eduardo = Voter.create(email: 'eduardo@civio.es', verified: true)
+raul    = Voter.create(email: 'karampatakis@okfn.gr', verified: true)
 
 ## Classifiers
 
 # Districts
-downtown  = District.create(name: 'Downtown')
-suburbs   = District.create(name: 'Suburbs')
-riverland = District.create(name: 'Riverland')
+a  = District.create(name: 'Δημοτική Ενότητα Α`')
+b  = District.create(name: 'Δημοτική Ενότητα Β`')
+c  = District.create(name: 'Δημοτική Ενότητα Γ`')
+d  = District.create(name: 'Δημοτική Ενότητα Δ`')
+e  = District.create(name: 'Δημοτική Ενότητα Ε`')
 
 # Areas
-environment = Area.create(name: 'Environmental Protection')
-culture     = Area.create(name: 'Cultural Affairs')
-sanitation  = Area.create(name: 'Sanitation')
+environment = Area.create(name: 'Προστασία Περιβάλλοντος')
+culture     = Area.create(name: 'Πολιτισμός')
+sanitation  = Area.create(name: 'Καθαριότητα')
 
 # Tags
-garbage   = Tag.create(name: 'Garbage Disposal')
-bicycles  = Tag.create(name: 'Bicycles')
-parks     = Tag.create(name: 'Parks and Recreation')
-libraries = Tag.create(name: 'Libraries')
+garbage   = Tag.create(name: 'Αποκομειδ Σκουπιδιών')
+bicycles  = Tag.create(name: 'Ποδηλατόδρομοι')
+parks     = Tag.create(name: 'Πάρκα και χώροι αναψυχής')
+libraries = Tag.create(name: 'Βιβλιοθήκες')
 
 ## Campaigns
 
@@ -96,19 +97,19 @@ def campaign_description_for(semester)
   case semester.season
   when :spring
     <<~EOD.gsub(/\s+/, " ").strip
-      Once more, the annual Spring campaign is up for all the citizens to collaborate on the allocation
-      of the second semester of current year's city budget.
+      Για ακόμη μία φορά, η ετήσια Εαρινή διαδικασία ψηφοφορίας ξεκινά για όλους τους πολίτες,
+       ώστε να συνεισφέρουν στην διαμόρφωση του προϋπολογισμού για το δεύτερο εξάμηνο του έτους
     EOD
   when :fall
     <<~EOD.gsub(/\s+/, " ").strip
-      Once more, the annual Fall campaign is up for all the citizens to collaborate on the allocation
-      of the first semester of next year's city budget.
+    Για ακόμη μία φορά, η ετήσια Χειμερινή διαδικασία ψηφοφορίας ξεκινά για όλους τους πολίτες,
+     ώστε να συνεισφέρουν στην διαμόρφωση του προϋπολογισμού για το δεύτερο εξάμηνο του έτους
     EOD
   end
 end
 
 closed_campaign  =  Campaign.create(
-                      title: "#{Semester.previous} Campaign",
+                      title: "#{Semester.previous} Περίοδος",
                       budget: 114_192.56,
                       start_date: Semester.previous.start,
                       end_date: Semester.previous.end,
@@ -116,7 +117,7 @@ closed_campaign  =  Campaign.create(
                       active: false
                     )
 open_campaign    =  Campaign.create(
-                      title: "#{Semester.current} Campaign",
+                      title: "#{Semester.current} Περίοδος",
                       budget: 252_343.45,
                       start_date: Semester.current.start,
                       end_date: Semester.current.end,
@@ -124,7 +125,7 @@ open_campaign    =  Campaign.create(
                       active: true
                     )
 pending_campaign =  Campaign.create(
-                      title: "#{Semester.next} Campaign",
+                      title: "#{Semester.next} Περίοδος",
                       budget: 363_343.45,
                       start_date: Semester.next.start,
                       end_date: Semester.next.start,
@@ -135,19 +136,19 @@ pending_campaign =  Campaign.create(
 ## Proposals
 
 trees_1 = Proposal.create(
-            title: 'Trees for Cantina Rd.',
+            title: 'Δενδροφύτευση επι της Εγνατίας.',
             budget: 10_000.00,
-            classifiers: [downtown, environment, parks],
+            classifiers: [a, environment, parks],
             campaign: open_campaign,
             description: <<~EOD
-              Cantina Rd. is lacking any type of vegetation, making it little attractive to pedestrian traffic.
-              Planting some trees not only would improve the looks of the street, but also have a real impact in the air quality.
+              Η Εγνατία Οδός, μία από τις κεντρικότερες οδικές αρτηρίες του Δήμου θεσσαλονίκης στερείται βασικής βλάστησης.
+               ... για να βελτιωθεί το μικροκλίμα και η ποιότητα του αέρα της περιοχής
             EOD
           )
 park_1  = Proposal.create(
             title: 'Playground for the Docks Quarter',
             budget: 102_344.32,
-            classifiers: [riverland],
+            classifiers: [a],
             campaign: open_campaign,
             description: <<~EOD
               The Docks quarter lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
@@ -157,7 +158,7 @@ park_1  = Proposal.create(
 lane_1  = Proposal.create(
             title: 'Bike Lane in Pinetree Area',
             budget: 4_510.50,
-            classifiers: [suburbs, environment, bicycles],
+            classifiers: [b, environment, bicycles],
             campaign: open_campaign,
             description: <<~EOD
               Pinetree Area is a beautiful place to go and ride your bike, but riding among the pedestrians is dangerous for both, the bikers and the pedestrians.
@@ -168,7 +169,7 @@ lane_1  = Proposal.create(
 trees_2 = Proposal.create(
             title: 'Trees for Rodeo Drive',
             budget: 15_250.25,
-            classifiers: [suburbs, environment, parks],
+            classifiers: [b, environment, parks],
             campaign: open_campaign,
             description: <<~EOD
               Rodeo Drive is lacking any type of vegetation, making it little attractive to pedestrian traffic.
@@ -178,7 +179,7 @@ trees_2 = Proposal.create(
 park_2  = Proposal.create(
             title: 'Playground for the Bellefleur Quarter',
             budget: 50_000.00,
-            classifiers: [suburbs],
+            classifiers: [b],
             campaign: open_campaign,
             description: <<~EOD
               The Bellefleur quarter lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
@@ -188,7 +189,7 @@ park_2  = Proposal.create(
 lane_2  = Proposal.create(
             title: 'Bike Lane in the Financial Center',
             budget: 14_700.00,
-            classifiers: [downtown, environment, bicycles],
+            classifiers: [c, environment, bicycles],
             campaign: open_campaign,
             description: <<~EOD
               The Fiancial Center is a place where communting by bike would be great, but riding among the cars is dangerous for both, the bikers and the drivers.
@@ -199,7 +200,7 @@ lane_2  = Proposal.create(
 trees_3 = Proposal.create(
             title: 'Trees for South Bridge',
             budget: 8_500.00,
-            classifiers: [riverland, environment, parks],
+            classifiers: [d, environment, parks],
             campaign: open_campaign,
             description: <<~EOD
               South Bridge is lacking any type of vegetation, making it little attractive to pedestrian traffic.
@@ -209,7 +210,7 @@ trees_3 = Proposal.create(
 park_3  = Proposal.create(
             title: 'Playground for Downtown',
             budget: 102_344.32,
-            classifiers: [downtown],
+            classifiers: [e],
             campaign: open_campaign,
             description: <<~EOD
               The Downtown district lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
@@ -219,7 +220,7 @@ park_3  = Proposal.create(
 lane_3  = Proposal.create(
             title: 'Bike Lane in North Bridge',
             budget: 6_130.70,
-            classifiers: [riverland, environment, bicycles],
+            classifiers: [b, environment, bicycles],
             campaign: open_campaign,
             description: <<~EOD
               North Bridge is a convenient place to go around the Riverland district, but riding your bike among the pedestrians is dangerous for both, the bikers and the pedestrians.
