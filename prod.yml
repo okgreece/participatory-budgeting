@@ -1,0 +1,12 @@
+version: '2'
+services:
+    participatory:
+        image: openbudgets/participatory
+        build: .
+        volumes:
+            - ../volumes/participatory/database:/var/lib/postgresql/data
+        ports:
+            - "80:80"
+        env_file:
+            - ./docker/.env
+
