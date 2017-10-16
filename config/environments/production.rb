@@ -97,4 +97,8 @@ Rails.application.configure do
       domain:         ENV['MAILER_DOMAIN'],
       enable_starttls_auto: (ENV['MAILER_TLS'] == 'true')
   }
+
+  if ENV["VALIDATE_ALL"].present?
+    config.validate_all = ENV["VALIDATE_ALL"]
+  end
 end

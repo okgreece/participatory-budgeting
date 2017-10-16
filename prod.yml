@@ -4,7 +4,7 @@ services:
         image: openbudgets/participatory
         build: .
         volumes:
-            - ../volumes/participatory/database:/var/lib/postgresql/data
+            - ./volumes/participatory/database:/var/lib/postgresql/data
         ports:
             - "80:80"
         env_file:

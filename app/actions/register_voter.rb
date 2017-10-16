@@ -22,7 +22,7 @@ class RegisterVoter
   end
 
   def valid_secret?
-    return true if VoterSecret.list_of_secrets.empty?
+    return true if VoterSecret.list_of_secrets.empty? || Rails.configuration.validate_all
     !@secret.nil?
   end
 end
