@@ -8,23 +8,17 @@ admin = Admin::Role.create(email: 's.karampatakis@gmail.com')
 ## Classifiers
 
 # Districts
-downtown  = District.create(name: 'Downtown')
-suburbs   = District.create(name: 'Suburbs')
-riverland = District.create(name: 'Riverland')
+#use rails console to add classifiers
+#downtown  = District.create(name: 'Downtown')
 
 # Areas
-environment = Area.create(name: 'Environmental Protection')
-culture     = Area.create(name: 'Cultural Affairs')
-sanitation  = Area.create(name: 'Sanitation')
+#environment = Area.create(name: 'Environmental Protection')
 
 # Tags
-garbage   = Tag.create(name: 'Garbage Disposal')
-bicycles  = Tag.create(name: 'Bicycles')
-parks     = Tag.create(name: 'Parks and Recreation')
-libraries = Tag.create(name: 'Libraries')
+#garbage   = Tag.create(name: 'Garbage Disposal')
 
 ## Campaigns
-
+=begin
 class Semester
   def self.current
     Semester.new
@@ -102,7 +96,7 @@ def campaign_description_for(semester)
     EOD
   end
 end
-
+#use rails console to add campaigns
 closed_campaign  =  Campaign.create(
                       title: "#{Semester.previous} Campaign",
                       budget: 114_192.56,
@@ -127,3 +121,5 @@ pending_campaign =  Campaign.create(
                       description: campaign_description_for(Semester.next),
                       active: false
                     )
+=end
+
