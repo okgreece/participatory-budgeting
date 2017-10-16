@@ -2,14 +2,8 @@
 
 ## Admin roles
 
-civio = Admin::Role.create(email: '@civio.es')
 admin = Admin::Role.create(email: 's.karampatakis@gmail.com')
 
-## Voters
-
-raul    = Voter.create(email: 'raul@civio.es', verified: true)
-eduardo = Voter.create(email: 'eduardo@civio.es', verified: true)
-sotiris = Voter.create(email: 's.karampatakis@gmail.com', verified: true)
 
 ## Classifiers
 
@@ -133,106 +127,3 @@ pending_campaign =  Campaign.create(
                       description: campaign_description_for(Semester.next),
                       active: false
                     )
-
-## Proposals
-
-trees_1 = Proposal.create(
-            title: 'Trees for Cantina Rd.',
-            budget: 10_000.00,
-            classifiers: [downtown, environment, parks],
-            campaign: open_campaign,
-            description: <<~EOD
-              Cantina Rd. is lacking any type of vegetation, making it little attractive to pedestrian traffic.
-              Planting some trees not only would improve the looks of the street, but also have a real impact in the air quality.
-            EOD
-          )
-park_1  = Proposal.create(
-            title: 'Playground for the Docks Quarter',
-            budget: 102_344.32,
-            classifiers: [riverland],
-            campaign: open_campaign,
-            description: <<~EOD
-              The Docks quarter lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
-              Building a playground in the district would save the children, and their parents, an inconvenient trip to other areas of the city.
-            EOD
-          )
-lane_1  = Proposal.create(
-            title: 'Bike Lane in Pinetree Area',
-            budget: 4_510.50,
-            classifiers: [suburbs, environment, bicycles],
-            campaign: open_campaign,
-            description: <<~EOD
-              Pinetree Area is a beautiful place to go and ride your bike, but riding among the pedestrians is dangerous for both, the bikers and the pedestrians.
-              Having a dedicated bike lane will improve security and make the visit more enjoyable.
-            EOD
-          )
-
-trees_2 = Proposal.create(
-            title: 'Trees for Rodeo Drive',
-            budget: 15_250.25,
-            classifiers: [suburbs, environment, parks],
-            campaign: open_campaign,
-            description: <<~EOD
-              Rodeo Drive is lacking any type of vegetation, making it little attractive to pedestrian traffic.
-              Planting some trees not only would improve the looks of the street, but also have a real impact in the air quality.
-            EOD
-          )
-park_2  = Proposal.create(
-            title: 'Playground for the Bellefleur Quarter',
-            budget: 50_000.00,
-            classifiers: [suburbs],
-            campaign: open_campaign,
-            description: <<~EOD
-              The Bellefleur quarter lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
-              Building a playground in the district would save the children, and their parents, an inconvenient trip to other areas of the city.
-            EOD
-          )
-lane_2  = Proposal.create(
-            title: 'Bike Lane in the Financial Center',
-            budget: 14_700.00,
-            classifiers: [downtown, environment, bicycles],
-            campaign: open_campaign,
-            description: <<~EOD
-              The Fiancial Center is a place where communting by bike would be great, but riding among the cars is dangerous for both, the bikers and the drivers.
-              Having a dedicated bike lane will improve security and make the trip more enjoyable.
-            EOD
-          )
-
-trees_3 = Proposal.create(
-            title: 'Trees for South Bridge',
-            budget: 8_500.00,
-            classifiers: [riverland, environment, parks],
-            campaign: open_campaign,
-            description: <<~EOD
-              South Bridge is lacking any type of vegetation, making it little attractive to pedestrian traffic.
-              Planting some trees not only would improve the looks of the street, but also have a real impact in the air quality.
-            EOD
-          )
-park_3  = Proposal.create(
-            title: 'Playground for Downtown',
-            budget: 102_344.32,
-            classifiers: [downtown],
-            campaign: open_campaign,
-            description: <<~EOD
-              The Downtown district lacks of any infraestructure specifically tailored for children, making it difficult to go out and play.
-              Building a playground in the district would save the children, and their parents, an inconvenient trip to other areas of the city.
-            EOD
-          )
-lane_3  = Proposal.create(
-            title: 'Bike Lane in North Bridge',
-            budget: 6_130.70,
-            classifiers: [riverland, environment, bicycles],
-            campaign: open_campaign,
-            description: <<~EOD
-              North Bridge is a convenient place to go around the Riverland district, but riding your bike among the pedestrians is dangerous for both, the bikers and the pedestrians.
-              Having a dedicated bike lane will improve security and make the trip more enjoyable.
-            EOD
-          )
-
-## Voter secrets
-local_1    = VoterSecret.create(data: { document: '53713184D', birth_date: '1974-11-29' })
-local_2    = VoterSecret.create(data: { document: '279793B', birth_date: '1986-10-19' })
-resident_1 = VoterSecret.create(data: { document: 'X07323369A', birth_date: '1945-11-06' })
-resident_2 = VoterSecret.create(data: { document: 'Y01927564M', birth_date: '1945-11-06' })
-foreign_1  = VoterSecret.create(data: { document: '423994F', birth_date: '1990-05-12'})
-foreign_2  = VoterSecret.create(data: { document: '08-VU-2160/16', birth_date: '1998-11-02' })
