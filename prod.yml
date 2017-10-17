@@ -1,12 +1,22 @@
 version: '2'
 services:
+    postgres:
+        image: 'postgres:9.4'
+        environment:
+          POSTGRES_USER: 'root'
+          POSTGRES_PASSWORD: 'root'
+        ports:
+            - '5432:5432'
+        volumes:
+            - './volumes/postgres:/var/lib/postgresql/data'
     participatory:
         image: openbudgets/participatory
+        depends_on: 
+            - postgres
         build: .
-        volumes:
-            - ./volumes/participatory/database:/var/lib/postgresql/data
         ports:
             - "80:80"
+        links:
+            - 'postgres'
         env_file:
             - ./docker/.env
-
