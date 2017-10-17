@@ -8,10 +8,6 @@ RUN gem install passenger -v 5.1.11 && \
     apt-get install -y libcurl4-openssl-dev && \
     passenger-install-nginx-module --auto
 
-ADD docker/nginx.conf /opt/nginx/conf/nginx.conf
-
-RUN echo "daemon off;" >> /opt/nginx/conf/nginx.conf
-
 RUN bundle config --global frozen 1
 
 RUN mkdir -p /usr/src/app
@@ -22,6 +18,10 @@ RUN bundle install --system
 
 ADD . /usr/src/app
 RUN npm install --unsafe-perm
+
+ADD docker/nginx.conf /opt/nginx/conf/nginx.conf
+
+RUN echo "daemon off;" >> /opt/nginx/conf/nginx.conf
 
 # Initialize log
 RUN cat /dev/null > /usr/src/app/log/production.log

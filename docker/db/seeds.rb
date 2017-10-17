@@ -9,13 +9,28 @@ admin = Admin::Role.create(email: 's.karampatakis@gmail.com')
 
 # Districts
 #use rails console to add classifiers
-#downtown  = District.create(name: 'Downtown')
+District.create(name: "Α' Δημοτική Κοινότητα")
+District.create(name: "Β' Δημοτική Κοινότητα")
+District.create(name: "Γ' Δημοτική Κοινότητα")
+District.create(name: "Δ' Δημοτική Κοινότητα")
+District.create(name: "Ε' Δημοτική Κοινότητα")
+District.create(name: "Δημοτική Κοινότητα Τριανδρίας")
+
 
 # Areas
-#environment = Area.create(name: 'Environmental Protection')
+Area.create(name: 'Δράσεις Πολιτισμού')
+Area.create(name: 'Προστασία Περιβάλλοντος')
+Area.create(name: 'Καθαριότητα')
 
 # Tags
 #garbage   = Tag.create(name: 'Garbage Disposal')
+Tag.create(name:"Πάρκα αναψυχής")
+Tag.create(name:"Πολιτιστικές Εκδηλώσεις")
+Tag.create(name:"Παιδικές Χαρές")
+Tag.create(name:"Κάδοι")
+Tag.create(name:"Πεζοδρόμηση")
+Tag.create(name:"Δενδροφύτευση")
+Tag.create(name:"Ανάπλαση χώρου")
 
 ## Campaigns
 =begin
@@ -122,4 +137,18 @@ pending_campaign =  Campaign.create(
                       active: false
                     )
 =end
+date_start = "2017-11-01"
+date_end = "2018-01-01"
+description = "Δοκιμαστική λειτουργία ιστοτόπου Συμμετοχικού Προϋπολογισμού.
+              Τίποτα από τα αναφερθέντα έργα και ποσά δεν ανταποκρίνονται
+              στην πραγματικότητα. Σκοπός αυτού του ιστοτόπου είναι η πιλοτική
+              λειτουργία της εφαρμογής 'Συμμετοχικός Προϋπολογισμος' που αναπτύχθηκε στα πλαίσια του έργου OpenBudgets.eu."
 
+Campaign.create(
+                      title: "Διαβούλευση Προϋπολογισμού 2017",
+                      budget: 20_000,
+                      start_date: date_start,
+                      end_date: date_end,
+                      description: description,
+                      active: true
+                    )
