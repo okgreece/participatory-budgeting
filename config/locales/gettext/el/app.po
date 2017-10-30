@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: civio-openbudgets 1.0\n"
 "Report-Msgid-Bugs-To: contact@translation.io\n"
 "POT-Creation-Date: 2017-10-30 11:37+0200\n"
-"PO-Revision-Date: 2017-10-30 11:46+0200\n"
+"PO-Revision-Date: 2017-10-30 13:00+0200\n"
 "Last-Translator: \n"
 "Language-Team: Greek, Modern (1453-)\n"
 "Language: el\n"
@@ -563,7 +563,7 @@ msgstr "Τέλος"
 
 #: ../../../tmp/translation/haml-gettext-00000103.rb:2
 msgid "Total amount"
-msgstr "Συνολικό ποσό"
+msgstr "Συνολικό ποσό | Συνολικό Διαθέσιμο ποσό: %{campaign_budget} €"
 
 #: ../../../tmp/translation/haml-gettext-00000107.rb:2
 msgid "Your voted proposals"

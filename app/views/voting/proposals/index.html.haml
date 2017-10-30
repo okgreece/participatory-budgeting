@@ -8,7 +8,7 @@
           %a#vote-finish.btn.btn-block.btn-primary.disabled{href: summarize_voting_proposals_path, role: 'button'}= _('Finish')
         .col-md-8.col-lg-9
           .vote-progress-title
-            = _('Total amount')
+            = _('Total amount') % { campaign_budget: number_to_currency(@campaign_budget, unit: '', precision: 2, format: "%n %u")}
           .progress.vote-progress-bar
             .progress-bar{ style: 'width: 0%', role: 'progressbar', aria: { valuenow: '0', valuemin: '0', valuemax: '100' } }
           .vote-progress-amount{ data: { max_amount: @campaign_budget } }
