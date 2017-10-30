@@ -18,6 +18,7 @@ services:
         links:
             - 'postgres'
         volumes:
-            - './volumes/participatory/app.log:/usr/lib/app/log/production.log'
+            - './volumes/participatory/log:/usr/src/app/log'
+            - './volumes/participatory/uploads:/usr/src/app/public/uploads'
         env_file:
             - ./docker/.env
